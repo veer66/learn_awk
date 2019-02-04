@@ -73,3 +73,17 @@ ti minute(s)e usage
 5 minute(s)
 10 minute(s)
 ```
+
+ใช้ tail ช่วยตัด head ออก
+
+```
+cat pm25.csv | tail -n +2 | gawk -F, '{ gsub(/m/, " minute(s)", $1); print $1 }'
+```
+
+ผลลัพธ์
+
+```
+0 minute(s)
+5 minute(s)
+10 minute(s)
+```
