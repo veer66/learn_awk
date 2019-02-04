@@ -42,3 +42,34 @@ pm2.5 (mi)
 28 mg/m3
 18 mg/m3
 ```
+
+## ใช้ gsub เปลี่ยนแปลงข้อมูล m ของแต่ละบรรทัดเป็น minute(s) แล้วแสดงผล
+
+```
+# gsub แทนค่า /m/ (regular expression) ใน $1 ด้วย minute(s) แล้วก็เอาไปเก็บใน $1 เหมือนเดิม
+$ cat pm25.csv | gawk -F, '{ gsub(/m/, "minute(s)", $1); print $1 }'
+```
+
+ผลที่ได้
+
+```
+timinute(s)e usage
+0minute(s)
+5minute(s)
+10minute(s)
+```
+
+เพิ่มช่องว่าง
+
+```
+cat pm25.csv | gawk -F, '{ gsub(/m/, " minute(s)", $1); print $1 }'
+
+```
+ผลลัพธ์
+
+```
+ti minute(s)e usage
+0 minute(s)
+5 minute(s)
+10 minute(s)
+```
