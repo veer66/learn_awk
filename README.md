@@ -47,7 +47,7 @@ pm2.5 (mi)
 
 ```
 # gsub แทนค่า /m/ (regular expression) ใน $1 ด้วย minute(s) แล้วก็เอาไปเก็บใน $1 เหมือนเดิม
-$ cat pm25.csv | gawk -F, '{ gsub(/m/, "minute(s)", $1); print $1 }'
+$ cat pm25.csv | awk -F, '{ gsub(/m/, "minute(s)", $1); print $1 }'
 ```
 
 ผลที่ได้
@@ -62,7 +62,7 @@ timinute(s)e usage
 เพิ่มช่องว่าง
 
 ```
-cat pm25.csv | gawk -F, '{ gsub(/m/, " minute(s)", $1); print $1 }'
+cat pm25.csv | awk -F, '{ gsub(/m/, " minute(s)", $1); print $1 }'
 
 ```
 ผลลัพธ์
@@ -77,7 +77,7 @@ ti minute(s)e usage
 ใช้ tail ช่วยตัด head ออก
 
 ```
-cat pm25.csv | tail -n +2 | gawk -F, '{ gsub(/m/, " minute(s)", $1); print $1 }'
+cat pm25.csv | tail -n +2 | awk -F, '{ gsub(/m/, " minute(s)", $1); print $1 }'
 ```
 
 ผลลัพธ์
